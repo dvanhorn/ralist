@@ -18,9 +18,17 @@
 
       http://bit.ly/ralist
 
+   To install:
+      (require (planet dvanhorn/ralist))
+   Or:
+      racket -p dvanhorn/ralist
+
    To test, benchmark:
       (require (planet dvanhorn/ralist/run-tests))
       (require (planet dvanhorn/ralist/run-benchmarks))
+   Or:
+      racket -p dvanhorn/ralist/run-tests
+      racket -p dvanhorn/ralist/run-benchmarks
 
    For contracted bindings, use:
       (require (planet dvanhorn/ralist/contract))
@@ -76,7 +84,6 @@
 |#
 (require racket/provide)
 (require racket/unsafe/ops)
-(require (prefix-in r: racket/base))
 
 (define (zero? n) (eq? 0 n))
 
@@ -575,8 +582,8 @@
 (define (ra:count ls)
   (let recr ((ls ls))
     (if (kons? ls)
-        (r:+ (unsafe-kons-size ls)
-             (recr (unsafe-kons-rest ls)))
+        (+ (unsafe-kons-size ls)
+           (recr (unsafe-kons-rest ls)))
         0)))
 
 ;; [RaListof X] -> Nat
