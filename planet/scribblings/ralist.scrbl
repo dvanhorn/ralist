@@ -10,9 +10,9 @@
 
 Random-access lists are a purely functional data structure for representing lists 
 of values. A random-access list may act as a drop in replacement for the usual 
-sequential list data structure (@scheme[cons?], @scheme[cons], @scheme[car], 
-@scheme[cdr]), which additionally supports fast index-based addressing 
-and updating (@scheme[list-ref], @scheme[list-set]).  
+sequential list data structure (@racket[cons?], @racket[cons], @racket[car], 
+@racket[cdr]), which additionally supports fast index-based addressing 
+and updating (@racket[list-ref], @racket[list-set]).  
 
 This document outlines the API for the random-access list 
 library.  This implementation is based on Okasaki, FPCA '95.

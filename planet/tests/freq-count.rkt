@@ -1,4 +1,4 @@
-#lang scheme
+#lang racket
 (require ;planet/version
          rackunit)
 (require/expose "../benchmarks/freq-count.ss" 

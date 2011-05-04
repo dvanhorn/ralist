@@ -8,4 +8,4 @@
   (define title "RAList v. List benchmark")
   (define module-path (this-package-version-symbol))
   (define ps (list "ra" "mz"))
-  (include (file "private/ra-list-common.source")))
+  (include (file "private/ra-list-common.rktl")))

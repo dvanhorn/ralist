@@ -1,4 +1,4 @@
-#lang scheme
+#lang racket
 (require planet/version
          rackunit
          (this-package-in benchmarks/garden-fence))

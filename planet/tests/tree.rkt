@@ -1,4 +1,4 @@
-#lang scheme
+#lang racket
 (require ;planet/version
          rackunit)
 (require/expose "../main.ss" ;(this-package-in main)

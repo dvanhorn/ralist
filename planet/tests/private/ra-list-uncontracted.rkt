@@ -1,4 +1,4 @@
-#lang scheme
+#lang racket
 (require planet/version
          rackunit
          (this-package-in main))
@@ -8,4 +8,4 @@
                 (syntax-rules ()
                   [(check-fail e)
                    'ignore])))
-    (include (file "ra-list-common.source"))))
+    (include (file "ra-list-common.rktl"))))

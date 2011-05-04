@@ -1,4 +1,4 @@
-#lang scheme
+#lang racket
 (require planet/version
          rackunit
          (this-package-in contract))
@@ -9,4 +9,4 @@
                       [(check-fail e)
                        (check-exn exn:fail:contract?
                                   (lambda () e))])))
-    (include (file "ra-list-common.source"))))
+    (include (file "ra-list-common.rktl"))))

@@ -1,4 +1,4 @@
-#lang scheme
+#lang racket
 ;; Garden fence encryption benchmark
 ;; http://list.cs.brown.edu/pipermail/plt-scheme/2009-March/031313.html
 
@@ -136,7 +136,7 @@
 
 ;; [Listof X] Nat -> [Listof X]
 ;; create a wave from the list, depth n
-;; [needed because in Scheme, string != (Listof Char)]
+;; [needed because in Racket, string != (Listof Char)]
 (define (wave ls n)
    (sort2 (in-list (shared ((x (append (range 1 n) 
                                        (range (- n 1) 2)  x))) x))

@@ -1,4 +1,4 @@
-#lang scheme
+#lang racket
 (require planet/version
          (prefix-in ra: (this-package-in main))
          (prefix-in ls: (this-package-in contract))
@@ -12,4 +12,4 @@
   (define title "Contract v. Un benchmark")
   (define module-path (this-package-version-symbol contract))
   (define ps (list "un" "co" #;"tr"))
-  (include (file "private/ra-list-common.source")))
+  (include (file "private/ra-list-common.rktl")))

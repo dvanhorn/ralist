@@ -4,13 +4,13 @@
           scribble/struct
           planet/scribble
           planet/version
-          (only-in (for-label scheme)
+          (only-in (for-label racket)
                    lambda for for/fold sequence? >= < + 
                    min sub1 add1 positive? procedure?
                    procedure-arity-includes? or
                    zero? values sqrt)
-          (prefix-in mz: (only-in (for-label scheme) length))
-          (for-label scheme/contract)
+          (prefix-in mz: (only-in (for-label racket) length))
+          (for-label racket/contract)
           (for-label (this-package-in main))
           (only-in (for-label (this-package-in contract))
                    count=/c count>/c is-true/c arity-includes/c))
@@ -72,27 +72,27 @@ comparison.
 @section{Pairs and Lists}
 
 A @italic{pair} combines exactly two values. The first value is accessed with 
-the @scheme[car] procedure, and the second value is accessed with the 
-@scheme[cdr] procedure.  Pairs are not mutable.
+the @racket[car] procedure, and the second value is accessed with the 
+@racket[cdr] procedure.  Pairs are not mutable.
 
-A @italic{list} is recursively defined: it is either the constant @scheme[empty], 
+A @italic{list} is recursively defined: it is either the constant @racket[empty], 
 or it is a pair whose second value is a list.
 
 A list can be used as a single-valued sequence (see 
 @secref["sequences" #:doc '(lib "scribblings/reference/reference.scrbl")]).
 The elements of the list serve as elements of the sequence. 
-See also @scheme[in-list].
+See also @racket[in-list].
 
 @section{Sequences}
 
-Random-access lists implement the sequence interface, so @scheme[(list? x)] 
-implies @scheme[(sequence? x)], and elements of a list may be extracted with
-any of the @scheme[for] syntactic forms.
+Random-access lists implement the sequence interface, so @racket[(list? x)] 
+implies @racket[(sequence? x)], and elements of a list may be extracted with
+any of the @racket[for] syntactic forms.
 
 @defproc[(in-list [xs list?]) list?]{
-Returns a sequence equivalent to @scheme[xs].  Since lists are sequences,
-this is a list identity function, but an @scheme[in-list] application can
-provide better performance when it appears directly in a @scheme[for] clause.}
+Returns a sequence equivalent to @racket[xs].  Since lists are sequences,
+this is a list identity function, but an @racket[in-list] application can
+provide better performance when it appears directly in a @racket[for] clause.}
 
 @examples[#:eval the-eval
                  (in-list (list 1 2 3))
@@ -104,9 +104,9 @@ provide better performance when it appears directly in a @scheme[for] clause.}
 @section{Iterations and Comprehensions}
 
 @defform[(for/list ([id sequence-expr] ...) body ...+)]{
-Iterates like @scheme[for], but that the last expression in 
+Iterates like @racket[for], but that the last expression in 
 the bodys must produce a single value, and the result of the 
-@scheme[for/list] expression is a list of the results in order.}
+@racket[for/list] expression is a list of the results in order.}
 
 @examples[#:eval the-eval
                  (for/list ([i '(1 2 3)]
@@ -131,8 +131,8 @@ The empty list.}
                  empty]
 
 @defproc[(cons [x any/c] [y any/c]) cons?]{
-Cons @scheme[x] onto @scheme[y].  When @scheme[(list? y)], 
-@scheme[(cons x y)] constructs a list.}
+Cons @racket[x] onto @racket[y].  When @racket[(list? y)], 
+@racket[(cons x y)] constructs a list.}
 
 @examples[#:eval the-eval
                  (cons 'x empty)
@@ -140,16 +140,16 @@ Cons @scheme[x] onto @scheme[y].  When @scheme[(list? y)],
                  (cons 'x 'y)]
 
 @defproc[(list [x any/c] ...) list?]{
-Returns a list containing the given @scheme[x]s as its elements.}
+Returns a list containing the given @racket[x]s as its elements.}
 
 @examples[#:eval the-eval
                  (list)
                  (list 'x 'y 'z)]
 
 @defproc[(list* [x any/c] ... [tail any/c]) any]{
-Returns a list containing the given @scheme[x]s as its elements
-and @scheme[tail] as its tail.  When @scheme[(list? tail)], 
-@scheme[(list* x ... tail)] constructs a list.}
+Returns a list containing the given @racket[x]s as its elements
+and @racket[tail] as its tail.  When @racket[(list? tail)], 
+@racket[(list* x ... tail)] constructs a list.}
 
 @examples[#:eval the-eval
                  (list* empty)
@@ -158,7 +158,7 @@ and @scheme[tail] as its tail.  When @scheme[(list? tail)],
                  (list* 1)]
 
 @defproc[(empty? [x any/c]) boolean?]{
-Is @scheme[x] the empty list?}
+Is @racket[x] the empty list?}
 
 @examples[#:eval the-eval
                  (empty? empty)
@@ -167,7 +167,7 @@ Is @scheme[x] the empty list?}
                  (empty? 'x)]
 
 @defproc[(cons? [x any/c]) boolean?]{
-Is @scheme[x] a pair?}
+Is @racket[x] a pair?}
 
 @examples[#:eval the-eval
                  (cons? empty)
@@ -176,7 +176,7 @@ Is @scheme[x] a pair?}
                  (cons? 'x)]
 
 @defproc[(list? [x any/c]) boolean?]{
-Is @scheme[x] a list?  Takes O(@scheme[(log2 (count x))]).}
+Is @racket[x] a list?  Takes O(@racket[(log2 (count x))]).}
 
 @examples[#:eval the-eval
                  (list? empty)
@@ -185,7 +185,7 @@ Is @scheme[x] a list?  Takes O(@scheme[(log2 (count x))]).}
                  (list? 'x)]
 
 @defproc[(first+rest [xs (and/c cons? list?)]) (values any/c list?)]{
-The anti-@scheme[cons] for lists.}
+The anti-@racket[cons] for lists.}
 
 @examples[#:eval the-eval
                  (first+rest (list 1 2 3))]
@@ -193,7 +193,7 @@ The anti-@scheme[cons] for lists.}
           (first+rest (cons 1 2))]
 
 @defproc[(first [xs (and/c cons? list?)]) any]{
-Returns the first element of the list @scheme[xs].}
+Returns the first element of the list @racket[xs].}
 
 @examples[#:eval the-eval
                  (first (cons 'x empty))
@@ -202,7 +202,7 @@ Returns the first element of the list @scheme[xs].}
           (first (cons 'x 'y))]
 
 @defproc[(rest [xs (and/c cons? list?)]) list?]{
-Returns the rest of the element of the list @scheme[xs].}
+Returns the rest of the element of the list @racket[xs].}
 
 @examples[#:eval the-eval
                  (rest (cons 'x empty))
@@ -211,7 +211,7 @@ Returns the rest of the element of the list @scheme[xs].}
           (rest (cons 'x 'y))]
 
 @defproc[(car+cdr [xs cons?]) (values any/c any/c)]{
-The anti-@scheme[cons] for pairs.}
+The anti-@racket[cons] for pairs.}
 
 @examples[#:eval the-eval
                  (car+cdr (cons 1 2))
@@ -219,7 +219,7 @@ The anti-@scheme[cons] for pairs.}
 @failures[(car+cdr empty)]
 
 @defproc[(car [p cons?]) any]{
-Returns the first component of the pair @scheme[p].}
+Returns the first component of the pair @racket[p].}
 
 @examples[#:eval the-eval
                  (car (cons 1 2))
@@ -227,7 +227,7 @@ Returns the first component of the pair @scheme[p].}
 @failures[(car empty)]
 
 @defproc[(cdr [p cons?]) any]{
-Returns second component of the pair @scheme[p].}
+Returns second component of the pair @racket[p].}
 
 @examples[#:eval the-eval
                  (cdr (cons 1 2))
@@ -237,8 +237,8 @@ Returns second component of the pair @scheme[p].}
 @defproc[(list-ref [xs (count>/c i)] 
                    [i natural-number/c]) 
          any/c]{
-Returns the element of @scheme[xs] at position @scheme[i].  
-This operation runs in O(@scheme[(min i (log2 (count xs)))]).}
+Returns the element of @racket[xs] at position @racket[i].  
+This operation runs in O(@racket[(min i (log2 (count xs)))]).}
 
 @examples[#:eval the-eval
                  (list-ref (list 'x 'y 'z) 0)
@@ -252,9 +252,9 @@ This operation runs in O(@scheme[(min i (log2 (count xs)))]).}
                    [i natural-number/c] 
                    [x any/c]) 
          cons?]{
-Returns a chain of pairs identical to @scheme[xs], except @scheme[x] 
-is the @scheme[i]th element.  This operation runs in 
-O(@scheme[(min i (log2 (count xs)))]).}
+Returns a chain of pairs identical to @racket[xs], except @racket[x] 
+is the @racket[i]th element.  This operation runs in 
+O(@racket[(min i (log2 (count xs)))]).}
 
 @examples[#:eval the-eval
                  (list-set (list 'x 'y 'z) 0 'a)
@@ -268,20 +268,20 @@ O(@scheme[(min i (log2 (count xs)))]).}
                       [i natural-number/c] 
                       [f (arity-includes/c 1)])
          cons?]{
-Returns @scheme[(list-set xs i (f (list-ref xs i)))].} 
+Returns @racket[(list-set xs i (f (list-ref xs i)))].} 
 
 @defproc[(list-ref/set [xs (count>/c i)] 
                        [i natural-number/c] 
                        [v any/c]) 
          (values any/c cons?)]{
-Returns @scheme[(values (list-ref xs i) (list-set xs i v))], but is more
+Returns @racket[(values (list-ref xs i) (list-set xs i v))], but is more
 efficient.}
                               
 @defproc[(list-ref/update [xs (count>/c i)] 
                           [i natural-number/c] 
                           [f (arity-includes/c 1)])
          (values any/c cons?)]{
-Returns @scheme[(values (list-ref xs i) (list-set xs i (f (list-ref xs i))))], 
+Returns @racket[(values (list-ref xs i) (list-set xs i (f (list-ref xs i))))], 
 but is more efficient.}
 
 @defproc[(second [xs (and/c list? (count>/c 1))]) any/c]{
@@ -337,10 +337,10 @@ Returns the last element of the list.}
               [xs (and/c list? (count=/c (count xs)))] 
               ...+)
          list?]{
-Applies @scheme[f] to each element of @scheme[xs]s from the first element
-to the last.  The @scheme[f] argument must accept the same number of arguments
-as the number of supplied @scheme[xs]s.  The result is a list containing each 
-result of @scheme[f] in order.}
+Applies @racket[f] to each element of @racket[xs]s from the first element
+to the last.  The @racket[f] argument must accept the same number of arguments
+as the number of supplied @racket[xs]s.  The result is a list containing each 
+result of @racket[f] in order.}
 
 @examples[#:eval the-eval
                  (map 0 empty) 
@@ -355,30 +355,30 @@ result of @scheme[f] in order.}
                 [b any/c]
                 [xs list?] ...+)
          any]{
-Like @scheme[foldr] but for random-access lists.}
+Like @racket[foldr] but for random-access lists.}
 
 @defproc[(foldl [f (or/c (is-true/c (zero? (count xs)))
                          (arity-includes/c (+ 2 (mz:length ...))))]
                 [a any/c]
                 [xs list?] ...+)
          any]{
-Like @scheme[foldl] but for random-access lists.}
+Like @racket[foldl] but for random-access lists.}
 
 @defproc[(andmap [f (or/c (is-true/c (zero? (count xs)))
                           (arity-includes/c (add1 (mz:length ...))))]
                  [xs (and/c list? (count=/c (count xs)))]  ...+) 
          any]{
-Like @scheme[andmap] but for random-access lists.}
+Like @racket[andmap] but for random-access lists.}
 
 @defproc[(ormap [f (or/c (is-true/c (zero? (count xs)))
                          (arity-includes/c (add1 (mz:length ...))))]
                 [xs (and/c list? (count=/c (count xs)))]  ...+) 
          any]{
-Like @scheme[ormap] but for random-access lists.}
+Like @racket[ormap] but for random-access lists.}
 
 @defproc[(make-list [n natural-number/c] [x any/c]) list?]{
-Returns a list with @scheme[n] elements, all of which are @scheme[x].
-Equivalent to @scheme[(build-list n (lambda (i) x))].}
+Returns a list with @racket[n] elements, all of which are @racket[x].
+Equivalent to @racket[(build-list n (lambda (i) x))].}
 
 @examples[#:eval the-eval
                  (make-list 0 'x)
@@ -388,8 +388,8 @@ Equivalent to @scheme[(build-list n (lambda (i) x))].}
                      [f (or/c (is-true/c (zero? n)) 
                               (arity-includes/c 1))]) 
          list?]{
-Creates a list of @scheme[n] elemenents by applying @scheme[f]
-to the integers from @scheme[0] to @scheme[(sub1 n)].}
+Creates a list of @racket[n] elemenents by applying @racket[f]
+to the integers from @racket[0] to @racket[(sub1 n)].}
 
 @examples[#:eval the-eval
                  (build-list 0 'not-function)
@@ -400,7 +400,7 @@ to the integers from @scheme[0] to @scheme[(sub1 n)].}
                  
 @defproc[(length [xs list?]) natural-number/c]{
 Returns the length of the list.  This operation runs in 
-O(@scheme[(log2 (length xs))]).}
+O(@racket[(log2 (length xs))]).}
 
 @examples[#:eval the-eval
                  (length empty)
@@ -408,8 +408,8 @@ O(@scheme[(log2 (length xs))]).}
 @failures[(length (list* 1 2 3))]
 
 @defproc[(count [xs any/c]) natural-number/c]{
-Returns the number of cons chained together to form @scheme[xs]. 
-O(@scheme[(log2 (count xs))]).}
+Returns the number of cons chained together to form @racket[xs]. 
+O(@racket[(log2 (count xs))]).}
 
 @examples[#:eval the-eval
                  (count empty)
@@ -418,8 +418,8 @@ O(@scheme[(log2 (count xs))]).}
                  (count (list* 1 2 3))]
 
 @defproc[(list-tail [xs list?] [i natural-number/c]) list?]{
-Returns the list after the first @scheme[i] elements of @scheme[xs].
-This operation, like its pair counterpart runs in O(@scheme[i]).}
+Returns the list after the first @racket[i] elements of @racket[xs].
+This operation, like its pair counterpart runs in O(@racket[i]).}
 
 @defproc*[[((append [xs list?] ...) list?)
            ((append [xs list?] ... [v any/c]) any/c)]]{
@@ -436,7 +436,7 @@ in order.}
           (append 1 (list 2 3))]
 
 @defproc[(reverse [xs list?]) list?]{
-Returns a list with all the elements of @scheme[xs] in reverse order.}
+Returns a list with all the elements of @racket[xs] in reverse order.}
 
 @examples[#:eval the-eval
                  (reverse empty)

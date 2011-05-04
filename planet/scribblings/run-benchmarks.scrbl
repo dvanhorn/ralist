@@ -84,10 +84,10 @@ Produce the plain text of the given string using the given key.}
 
 The process of scrambling a message works in a zigzag form.  The
 key gives the number of lines to the zigzag.  So suppose we want 
-to encrypt the message @scheme["diesisteinklartext"] with the key 
-@scheme[6].  Imagine the characters of the string are arranged in
+to encrypt the message @racket["diesisteinklartext"] with the key 
+@racket[6].  Imagine the characters of the string are arranged in
 a zigzag, or wave, or even @italic{fence}-like pattern, where the 
-height of the wave, or zigzagging fency thing is @scheme[6]:
+height of the wave, or zigzagging fency thing is @racket[6]:
 @verbatim[#<<HERE
 ;;;; 1. d         k         = (d k)     = "dk"
 ;;;; 2.  i       n l        = (i n l)   = "inl"
@@ -99,7 +99,7 @@ HERE
 ]
 The characters are grouped by line, forming the lists above.  The
 lists are appended in order to obtain the resulting cipher text:
-@scheme["dkinleiasertittxse"].
+@racket["dkinleiasertittxse"].
 
 
 

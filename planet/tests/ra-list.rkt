@@ -1,4 +1,4 @@
-#lang scheme
+#lang racket
 (require planet/version
          rackunit
          (this-package-in tests/private/ra-list-contracted)

@@ -1,4 +1,4 @@
-#lang scheme
+#lang racket
 (require planet/version
          (this-package-in main)
          (this-package-in benchmarks/ra-list)

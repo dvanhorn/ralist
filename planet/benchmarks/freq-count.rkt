@@ -1,4 +1,4 @@
-#lang scheme
+#lang racket
 (provide run-freq-count-benchmark)
 
 ;; Benchmark: purely functional frequency counting function.
