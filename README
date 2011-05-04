@@ -1,0 +1,35 @@
+#lang racket
+#|               .__  .__          __            .__   __   
+   ____________  |  | |__| _______/  |_   ______ |  |_/  |_ 
+   \_  __ \__  \ |  | |  |/  ___/\   __\  \____ \|  |\   __\
+    |  | \// __ \|  |_|  |\___ \  |  |    |  |_> >  |_|  |  
+    |__|  (____  /____/__/____  > |__|   /\   __/|____/__|  
+               \/             \/         \/__|              
+   Purely Functional Random-Access Lists.
+
+   Copyright (c) 2009 David Van Horn
+   Licensed under the Academic Free License version 3.0
+
+   (at dvanhorn (dot ccs neu edu))
+
+   Implementation based on Okasaki, FPCA '95.                          
+
+   Documentation, source code, bug tracking at:
+
+      http://bit.ly/ralist
+
+   To install:
+      (require (planet dvanhorn/ralist))
+   Or:
+      racket -p dvanhorn/ralist
+
+   To test, benchmark:
+      (require (planet dvanhorn/ralist/run-tests))
+      (require (planet dvanhorn/ralist/run-benchmarks))
+   Or:
+      racket -p dvanhorn/ralist/run-tests
+      racket -p dvanhorn/ralist/run-benchmarks
+
+   For contracted bindings, use:
+      (require (planet dvanhorn/ralist/contract))
+|#
