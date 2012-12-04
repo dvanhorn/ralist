@@ -89,8 +89,7 @@
 ;; ----------------------------------------------------
 ;; Functional random access list solution
 
-(require planet/version
-         (prefix-in ra: (this-package-in main)))
+(require (prefix-in ra: "../main.rkt"))
 
 ;; Nat Nat -> [Listof Nat]
 ;; Generate a fence permutation of the given

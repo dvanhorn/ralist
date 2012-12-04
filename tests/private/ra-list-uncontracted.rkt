@@ -1,7 +1,6 @@
 #lang racket
-(require planet/version
-         rackunit
-         (this-package-in main))
+(require rackunit
+         "../../main.rkt")
 
 (define/provide-test-suite ra-list-uncontracted-tests
   (let-syntax ((check-fail

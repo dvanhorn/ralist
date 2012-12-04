@@ -1,31 +1,29 @@
 #lang scribble/doc
 @(require scribble/manual
           scribble/eval
-          planet/scribble
-          planet/version
-          (for-label (this-package-in run-benchmarks)
-                     (this-package-in benchmarks/ra-list)
-                     (this-package-in benchmarks/contract)
-                     (this-package-in benchmarks/freq-count)
-                     (this-package-in benchmarks/garden-fence)))
+          (for-label "../run-benchmarks.rkt"
+                     "../benchmarks/ra-list.rkt"
+                     "../benchmarks/contract.rkt"
+                     "../benchmarks/freq-count.rkt"
+                     "../benchmarks/garden-fence.rkt"))
 
 @(define the-eval
   (let ([the-eval (make-base-eval)])
-    (the-eval `(require 
-                (planet ,(this-package-version-symbol benchmarks/ra-list))
-                (planet ,(this-package-version-symbol benchmarks/freq-count))
-                (planet ,(this-package-version-symbol benchmarks/garden-fence))))
+    (the-eval `(require
+                "../benchmarks/ra-list.rkt"
+                "../benchmarks/freq-count.rkt"
+                "../benchmarks/garden-fence.rkt"))
     the-eval))
 
 @title[#:tag "run-benchmarks"]{Benchmarks}
 
-@defmodule/this-package[run-benchmarks]
+@defmodule[run-benchmarks]
 
 Runs all of the benchmarks for this package.
 
 @section{Random-access vs. Sequential-access lists}
 
-@defmodule/this-package[benchmarks/ra-list]
+@defmodule[benchmarks/ra-list]
 
 This benchmark compares the performance of typical list operations
 for random and sequential lists.
@@ -36,7 +34,7 @@ for random and sequential lists.
 
 @section[#:tag "benchmarks/contract"]{Contracted vs. Uncontracted bindings}
 
-@defmodule/this-package[benchmarks/contract]
+@defmodule[benchmarks/contract]
 
 This benchmark compares the performance of the contracted and
 uncontracted bindings.
@@ -45,7 +43,7 @@ uncontracted bindings.
 
 @section{Frequency counting}
 
-@defmodule/this-package[benchmarks/freq-count]
+@defmodule[benchmarks/freq-count]
 
 This benchmark compares an number of imperative and functional solutions
 to the problem of counting the frequencies of each number in a given 
@@ -61,7 +59,7 @@ for discussion.
 
 @section{Garden fence encryption}
 
-@defmodule/this-package[benchmarks/garden-fence]
+@defmodule[benchmarks/garden-fence]
 
 This benchmark compares solutions to the problem of garden 
 fence encryption.

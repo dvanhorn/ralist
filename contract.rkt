@@ -1,6 +1,5 @@
 #lang racket
-(require planet/version
-         (this-package-in main)
+(require "main.rkt"
          (prefix-in mz: (only-in racket length)))
 
 (provide in-list for/list)

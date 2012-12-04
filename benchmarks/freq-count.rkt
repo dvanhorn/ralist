@@ -2,8 +2,7 @@
 (provide run-freq-count-benchmark)
 
 ;; Benchmark: purely functional frequency counting function.
-(require planet/version
-         (prefix-in ra: (this-package-in main)))
+(require (prefix-in ra: "../main.rkt"))
 
 (define (cnt-ra.0 f)
   (cnt-fp

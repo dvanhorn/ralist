@@ -1,20 +1,19 @@
 #lang scribble/doc
 @(require scribble/manual
-          planet/scribble
           (only-in (for-label racket) 
                    for sequence? lambda < and procedure? 
                    procedure-arity-includes?)
           (for-label racket/contract)
-          (only-in (for-label (this-package-in contract))
+          (only-in (for-label "../contract.rkt")
                    count=/c count>/c is-true/c arity-includes/c)
-          (only-in (for-label (this-package-in main))
+          (only-in (for-label "../contract.rkt")
                    build-list map count))
 
 @title[#:tag "contract"]{Contract}
 
-@defmodule/this-package[contract]
+@defmodule[contract]
 
-Just like @racketmodname/this-package[main], but with contracts.
+Just like @racketmodname[main], but with contracts.
 
 @defproc[(count=/c [n natural-number/c]) flat-contract?]{
 Returns a flat contract that requires the input to have a count

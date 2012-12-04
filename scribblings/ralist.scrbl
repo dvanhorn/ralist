@@ -1,8 +1,6 @@
 #lang scribble/doc
 @(require scribble/manual
-          planet/util
-          planet/scribble
-          (for-label (this-package-in main)))
+          (for-label "../main.rkt"))
 
 @title{@bold{RaList}: Purely Functional Random-Access Lists}
 
@@ -16,13 +14,6 @@ and updating (@racket[list-ref], @racket[list-set]).
 
 This document outlines the API for the random-access list 
 library.  This implementation is based on Okasaki, FPCA '95.
-
-@link[(format 
-       "http://planet.racket-lang.org/trac/newticket?component=~a%2F~a&planetversion=(~a+~a)"
-       (this-package-version-owner)
-       (this-package-version-name)
-       (this-package-version-maj)
-       (this-package-version-min))]{Report a bug}.
 
 @table-of-contents[]
 @include-section["bindings.scrbl"]

@@ -2,8 +2,6 @@
 @(require scribble/manual
           scribble/eval
           scribble/struct
-          planet/scribble
-          planet/version
           (only-in (for-label racket)
                    lambda for for/fold sequence? >= < + 
                    min sub1 add1 positive? procedure?
@@ -11,21 +9,21 @@
                    zero? values sqrt)
           (prefix-in mz: (only-in (for-label racket) length))
           (for-label racket/contract)
-          (for-label (this-package-in main))
-          (only-in (for-label (this-package-in contract))
+          (for-label "../main.rkt")
+          (only-in (for-label "../contract.rkt")
                    count=/c count>/c is-true/c arity-includes/c))
 
 @(define the-eval
   (let ([the-eval (make-base-eval)])
     (the-eval `(require 
-                (planet ,(this-package-version-symbol main))))
+                "../main.rkt"))
     #;(the-eval '(error-print-width 180))
     the-eval))
 
 @(define the-eval/co
   (let ([the-eval (make-base-eval)])
     (the-eval `(require 
-                (planet ,(this-package-version-symbol contract))))
+                "../contract.rkt"))
     #;(the-eval '(error-print-width 180))
     the-eval))
 
@@ -41,7 +39,7 @@
 
 @title[#:tag "main"]{Bindings}
 
-@defmodule/this-package[main]
+@defmodule[main]
 
 @section{Checked and Unchecked contracts}
 

@@ -1,7 +1,6 @@
 #lang racket
-(require planet/version
-         rackunit
-         (this-package-in benchmarks/garden-fence))
+(require rackunit
+         "../benchmarks/garden-fence.rkt")
 
 (provide garden-fence-tests)
 

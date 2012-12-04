@@ -1,36 +1,34 @@
 #lang scribble/doc
 @(require scribble/manual
           scribble/eval
-          planet/scribble
-          planet/version
           (for-label rackunit
                      rackunit/text-ui
-                     (this-package-in run-tests)
-                     (this-package-in tests/tree)
-                     (this-package-in tests/ra-list)
-                     (this-package-in tests/garden-fence)
-                     (this-package-in tests/freq-count)))
+                     "../run-tests.rkt"
+                     "../tests/tree.rkt"
+                     "../tests/ra-list.rkt"
+                     "../tests/garden-fence.rkt"
+                     "../tests/freq-count.rkt"))
 
 @(define the-eval
   (let ([the-eval (make-base-eval)])
     (the-eval `(require
                 rackunit
                 rackunit/text-ui
-                (planet ,(this-package-version-symbol tests/tree))
-                (planet ,(this-package-version-symbol tests/ra-list))
-                (planet ,(this-package-version-symbol tests/garden-fence))
-                (planet ,(this-package-version-symbol tests/freq-count))))
+                "../tests/tree.rkt"
+                "../tests/ra-list.rkt"
+                "../tests/garden-fence.rkt"
+                "../tests/freq-count.rkt"))
     the-eval))
 
 @title[#:tag "run-tests"]{Tests}
 
-@defmodule/this-package[run-tests]
+@defmodule[run-tests]
 
 Runs all unit tests for this package.
 
 @section{Tree tests}
 
-@defmodule/this-package[tests/tree]
+@defmodule[tests/tree]
 
 @defthing[tree-tests test-suite?]
 
@@ -38,7 +36,7 @@ Runs all unit tests for this package.
 
 @section{RaList tests}
 
-@defmodule/this-package[tests/ra-list]
+@defmodule[tests/ra-list]
 
 @defthing[ra-list-tests test-suite?]
 
@@ -46,7 +44,7 @@ Runs all unit tests for this package.
 
 @section{Garden fence tests}
 
-@defmodule/this-package[tests/garden-fence]
+@defmodule[tests/garden-fence]
 
 @defthing[garden-fence-tests test-suite?]
 
@@ -54,7 +52,7 @@ Runs all unit tests for this package.
 
 @section{Frequency counting tests}
 
-@defmodule/this-package[tests/freq-count]
+@defmodule[tests/freq-count]
 
 @defthing[freq-count-tests test-suite?]
 
