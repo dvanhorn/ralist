@@ -1,5 +1,5 @@
 #lang racket
-(require (prefix-in ra: "../main.rkt")
+(require (prefix-in ra: "../../ralist.rkt")
          (prefix-in ls: "../contract.rkt")
          #;(prefix-in tr: (planet krhari/pfds:1:5/skewbinaryrandomaccesslist)))
 

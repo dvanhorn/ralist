@@ -1,6 +1,6 @@
 #lang racket
 (require rackunit
-         "../../main.rkt")
+         "../../../ralist.rkt")
 
 (define/provide-test-suite ra-list-uncontracted-tests
   (let-syntax ((check-fail

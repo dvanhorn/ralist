@@ -9,14 +9,14 @@
                    zero? values sqrt)
           (prefix-in mz: (only-in (for-label racket) length))
           (for-label racket/contract)
-          (for-label "../main.rkt")
+          (for-label "../../ralist.rkt")
           (only-in (for-label "../contract.rkt")
                    count=/c count>/c is-true/c arity-includes/c))
 
 @(define the-eval
   (let ([the-eval (make-base-eval)])
     (the-eval `(require 
-                "main.rkt"))
+                "../ralist.rkt"))
     #;(the-eval '(error-print-width 180))
     the-eval))
 
@@ -39,7 +39,7 @@
 
 @title[#:tag "main"]{Bindings}
 
-@defmodule[ralist]
+@defmodule[data/ralist]
 
 @section{Checked and Unchecked contracts}
 

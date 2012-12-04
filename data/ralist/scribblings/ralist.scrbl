@@ -1,6 +1,6 @@
 #lang scribble/doc
 @(require scribble/manual
-          (for-label "../main.rkt"))
+          (for-label "../../ralist.rkt"))
 
 @title{@bold{RaList}: Purely Functional Random-Access Lists}
 

@@ -1,5 +1,5 @@
 #lang racket
-(require "main.rkt"
+(require "../ralist.rkt"
          (prefix-in mz: (only-in racket length)))
 
 (provide in-list for/list)

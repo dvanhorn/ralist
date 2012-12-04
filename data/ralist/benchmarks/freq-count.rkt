@@ -2,7 +2,7 @@
 (provide run-freq-count-benchmark)
 
 ;; Benchmark: purely functional frequency counting function.
-(require (prefix-in ra: "../main.rkt"))
+(require (prefix-in ra: "../../ralist.rkt"))
 
 (define (cnt-ra.0 f)
   (cnt-fp

@@ -1,5 +1,5 @@
 #lang racket
-(require (prefix-in ra: "../main.rkt")
+(require (prefix-in ra: "../../ralist.rkt")
          (prefix-in ls: racket))
 
 (provide run-ra-list-benchmark)

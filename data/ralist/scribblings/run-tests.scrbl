@@ -22,13 +22,13 @@
 
 @title[#:tag "run-tests"]{Tests}
 
-@defmodule[ralist/run-tests]
+@defmodule[data/ralist/run-tests]
 
 Runs all unit tests for this package.
 
 @section{Tree tests}
 
-@defmodule[ralist/tests/tree]
+@defmodule[data/ralist/tests/tree]
 
 @defthing[tree-tests test-suite?]
 
@@ -36,7 +36,7 @@ Runs all unit tests for this package.
 
 @section{RaList tests}
 
-@defmodule[ralist/tests/ra-list]
+@defmodule[data/ralist/tests/ra-list]
 
 @defthing[ra-list-tests test-suite?]
 
@@ -44,7 +44,7 @@ Runs all unit tests for this package.
 
 @section{Garden fence tests}
 
-@defmodule[ralist/tests/garden-fence]
+@defmodule[data/ralist/tests/garden-fence]
 
 @defthing[garden-fence-tests test-suite?]
 
@@ -52,7 +52,7 @@ Runs all unit tests for this package.
 
 @section{Frequency counting tests}
 
-@defmodule[ralist/tests/freq-count]
+@defmodule[data/ralist/tests/freq-count]
 
 @defthing[freq-count-tests test-suite?]
 

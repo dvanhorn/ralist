@@ -17,13 +17,13 @@
 
 @title[#:tag "run-benchmarks"]{Benchmarks}
 
-@defmodule[ralist/run-benchmarks]
+@defmodule[data/ralist/run-benchmarks]
 
 Runs all of the benchmarks for this package.
 
 @section{Random-access vs. Sequential-access lists}
 
-@defmodule[ralist/benchmarks/ra-list]
+@defmodule[data/ralist/benchmarks/ra-list]
 
 This benchmark compares the performance of typical list operations
 for random and sequential lists.
@@ -34,7 +34,7 @@ for random and sequential lists.
 
 @section[#:tag "benchmarks/contract"]{Contracted vs. Uncontracted bindings}
 
-@defmodule[ralist/benchmarks/contract]
+@defmodule[data/ralist/benchmarks/contract]
 
 This benchmark compares the performance of the contracted and
 uncontracted bindings.
@@ -43,7 +43,7 @@ uncontracted bindings.
 
 @section{Frequency counting}
 
-@defmodule[ralist/benchmarks/freq-count]
+@defmodule[data/ralist/benchmarks/freq-count]
 
 This benchmark compares an number of imperative and functional solutions
 to the problem of counting the frequencies of each number in a given 
@@ -59,7 +59,7 @@ for discussion.
 
 @section{Garden fence encryption}
 
-@defmodule[ralist/benchmarks/garden-fence]
+@defmodule[data/ralist/benchmarks/garden-fence]
 
 This benchmark compares solutions to the problem of garden 
 fence encryption.

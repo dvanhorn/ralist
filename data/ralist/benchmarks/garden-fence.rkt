@@ -89,7 +89,7 @@
 ;; ----------------------------------------------------
 ;; Functional random access list solution
 
-(require (prefix-in ra: "../main.rkt"))
+(require (prefix-in ra: "../../ralist.rkt"))
 
 ;; Nat Nat -> [Listof Nat]
 ;; Generate a fence permutation of the given

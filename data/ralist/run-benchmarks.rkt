@@ -1,5 +1,5 @@
 #lang racket
-(require "main.rkt"
+(require "../ralist.rkt"
          "benchmarks/ra-list.rkt"
          "benchmarks/contract.rkt"
          "benchmarks/freq-count.rkt"

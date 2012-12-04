@@ -11,7 +11,7 @@
 
 @title[#:tag "contract"]{Contract}
 
-@defmodule[ralist/contract]
+@defmodule[data/ralist/contract]
 
 @;Just like @racketmodname[main], but with contracts.
 
