@@ -16,30 +16,30 @@
 @(define the-eval
   (let ([the-eval (make-base-eval)])
     (the-eval `(require 
-                "../main.rkt"))
+                "main.rkt"))
     #;(the-eval '(error-print-width 180))
     the-eval))
 
 @(define the-eval/co
   (let ([the-eval (make-base-eval)])
     (the-eval `(require 
-                "../contract.rkt"))
+                "contract.rkt"))
     #;(the-eval '(error-print-width 180))
     the-eval))
 
 @(define-syntax failures 
    (syntax-rules ()
      [(failures e ...)
-      (begin (examples* #:eval the-eval/co 
-                        (make-paragraph '("Failures with contracts:")) 
-                        e ...)
-             (examples* #:eval the-eval 
-                        (make-paragraph '("Failures without contracts:")) 
-                        e ...))]))
+      (begin (examples #:eval the-eval/co 
+                       (make-paragraph '("Failures with contracts:")) 
+                       e ...)
+             (examples #:eval the-eval 
+                       (make-paragraph '("Failures without contracts:")) 
+                       e ...))]))
 
 @title[#:tag "main"]{Bindings}
 
-@defmodule[main]
+@defmodule[ralist]
 
 @section{Checked and Unchecked contracts}
 

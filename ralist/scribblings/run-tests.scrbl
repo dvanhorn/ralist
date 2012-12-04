@@ -14,21 +14,21 @@
     (the-eval `(require
                 rackunit
                 rackunit/text-ui
-                "../tests/tree.rkt"
-                "../tests/ra-list.rkt"
-                "../tests/garden-fence.rkt"
-                "../tests/freq-count.rkt"))
+                "tests/tree.rkt"
+                "tests/ra-list.rkt"
+                "tests/garden-fence.rkt"
+                "tests/freq-count.rkt"))
     the-eval))
 
 @title[#:tag "run-tests"]{Tests}
 
-@defmodule[run-tests]
+@defmodule[ralist/run-tests]
 
 Runs all unit tests for this package.
 
 @section{Tree tests}
 
-@defmodule[tests/tree]
+@defmodule[ralist/tests/tree]
 
 @defthing[tree-tests test-suite?]
 
@@ -36,7 +36,7 @@ Runs all unit tests for this package.
 
 @section{RaList tests}
 
-@defmodule[tests/ra-list]
+@defmodule[ralist/tests/ra-list]
 
 @defthing[ra-list-tests test-suite?]
 
@@ -44,7 +44,7 @@ Runs all unit tests for this package.
 
 @section{Garden fence tests}
 
-@defmodule[tests/garden-fence]
+@defmodule[ralist/tests/garden-fence]
 
 @defthing[garden-fence-tests test-suite?]
 
@@ -52,7 +52,7 @@ Runs all unit tests for this package.
 
 @section{Frequency counting tests}
 
-@defmodule[tests/freq-count]
+@defmodule[ralist/tests/freq-count]
 
 @defthing[freq-count-tests test-suite?]
 

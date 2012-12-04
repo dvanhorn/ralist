@@ -11,9 +11,9 @@
 
 @title[#:tag "contract"]{Contract}
 
-@defmodule[contract]
+@defmodule[ralist/contract]
 
-Just like @racketmodname[main], but with contracts.
+@;Just like @racketmodname[main], but with contracts.
 
 @defproc[(count=/c [n natural-number/c]) flat-contract?]{
 Returns a flat contract that requires the input to have a count

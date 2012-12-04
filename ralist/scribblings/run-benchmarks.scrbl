@@ -10,20 +10,20 @@
 @(define the-eval
   (let ([the-eval (make-base-eval)])
     (the-eval `(require
-                "../benchmarks/ra-list.rkt"
-                "../benchmarks/freq-count.rkt"
-                "../benchmarks/garden-fence.rkt"))
+                "benchmarks/ra-list.rkt"
+                "benchmarks/freq-count.rkt"
+                "benchmarks/garden-fence.rkt"))
     the-eval))
 
 @title[#:tag "run-benchmarks"]{Benchmarks}
 
-@defmodule[run-benchmarks]
+@defmodule[ralist/run-benchmarks]
 
 Runs all of the benchmarks for this package.
 
 @section{Random-access vs. Sequential-access lists}
 
-@defmodule[benchmarks/ra-list]
+@defmodule[ralist/benchmarks/ra-list]
 
 This benchmark compares the performance of typical list operations
 for random and sequential lists.
@@ -34,7 +34,7 @@ for random and sequential lists.
 
 @section[#:tag "benchmarks/contract"]{Contracted vs. Uncontracted bindings}
 
-@defmodule[benchmarks/contract]
+@defmodule[ralist/benchmarks/contract]
 
 This benchmark compares the performance of the contracted and
 uncontracted bindings.
@@ -43,7 +43,7 @@ uncontracted bindings.
 
 @section{Frequency counting}
 
-@defmodule[benchmarks/freq-count]
+@defmodule[ralist/benchmarks/freq-count]
 
 This benchmark compares an number of imperative and functional solutions
 to the problem of counting the frequencies of each number in a given 
@@ -59,7 +59,7 @@ for discussion.
 
 @section{Garden fence encryption}
 
-@defmodule[benchmarks/garden-fence]
+@defmodule[ralist/benchmarks/garden-fence]
 
 This benchmark compares solutions to the problem of garden 
 fence encryption.
