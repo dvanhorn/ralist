@@ -133,13 +133,22 @@
     (sort2 (wave (for/list ((i (in-naturals)) (c s)) i) n)
            (string->list s))))
 
+(define (list->circular-stream period)
+  (define (list->circ ls)
+    (cond [(empty? ls) (list->circ period)]
+          [else
+           (stream-cons (first ls)
+                        (list->circ (rest ls)))]))
+  (list->circ period))
+  
 ;; [Listof X] Nat -> [Listof X]
 ;; create a wave from the list, depth n
 ;; [needed because in Racket, string != (Listof Char)]
 (define (wave ls n)
-   (sort2 (in-list (shared ((x (append (range 1 n) 
-                                       (range (- n 1) 2)  x))) x))
-          ls))
+  (define rng
+    (list->circular-stream
+     (append (range 1 n) (range (- n 1) 2))))
+  (sort2 (in-stream rng) ls))
 
 ;; [Listof Nat] [Sequence Y] -> [Listof Y]
 ;; sort lst according to indicies in list inds
@@ -286,7 +295,9 @@
 ;(check-expect (fence-lv '(1 2 3 4 5 6 7 8 9 10 11) 3) '(1 5 9 2 4 6 8 10 3 7 11))
 
 (define (fence-lv lx n)
-  (define i (in-list (shared ((x (append (range 1 n) (range (- n 1) 2) x))) x)))
+  (define i
+    (list->circular-stream
+     (append (range 1 n) (range (- n 1) 2))))
   (define vc (make-vector n '()))
   (for ((i i) (x lx)) (vector-set! vc (- i 1) (cons x (vector-ref vc (- i 1)))))
                    ;; (vector-cons! vc (- i 1) x)
@@ -324,7 +335,9 @@
 ;(check-expect (fence-lr '(1 2 3 4 5 6 7 8 9 10 11) 3) '(1 5 9 2 4 6 8 10 3 7 11))
 
 (define (fence-lr lx n)
-  (define i (in-list (shared ((x (append (range 1 n) (range (- n 1) 2) x))) x)))
+  (define i
+    (list->circular-stream
+     (append (range 1 n) (range (- n 1) 2))))
   (ra:foldr app-rev
             empty
             (for/fold ([ls (ra:make-list n '())])
