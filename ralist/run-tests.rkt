@@ -3,7 +3,7 @@
          rackunit/text-ui
          "contract.rkt"
          "tests/tree.rkt"
-         "tests/ra-list.rkt")
+         "tests/ra-list.rkt"
          "tests/garden-fence.rkt"
          "tests/freq-count.rkt")
 
