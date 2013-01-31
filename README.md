@@ -21,3 +21,8 @@ To install:
 ```
 raco pkg install ralist
 ```
+To use:
+
+```
+(require data/ralist)
+```
