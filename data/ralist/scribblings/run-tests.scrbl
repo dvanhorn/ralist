@@ -14,10 +14,10 @@
     (the-eval `(require
                 rackunit
                 rackunit/text-ui
-                "tests/tree.rkt"
-                "tests/ra-list.rkt"
-                "tests/garden-fence.rkt"
-                "tests/freq-count.rkt"))
+                data/ralist/tests/tree
+                data/ralist/tests/ra-list
+                data/ralist/tests/garden-fence
+                data/ralist/tests/freq-count))
     the-eval))
 
 @title[#:tag "run-tests"]{Tests}

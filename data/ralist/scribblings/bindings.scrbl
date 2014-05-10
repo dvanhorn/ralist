@@ -15,15 +15,13 @@
 
 @(define the-eval
   (let ([the-eval (make-base-eval)])
-    (the-eval `(require 
-                "../ralist.rkt"))
+    (the-eval `(require data/ralist))
     #;(the-eval '(error-print-width 180))
     the-eval))
 
 @(define the-eval/co
   (let ([the-eval (make-base-eval)])
-    (the-eval `(require 
-                "contract.rkt"))
+    (the-eval `(require data/ralist/contract))
     #;(the-eval '(error-print-width 180))
     the-eval))
 

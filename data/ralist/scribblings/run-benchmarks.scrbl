@@ -10,9 +10,9 @@
 @(define the-eval
   (let ([the-eval (make-base-eval)])
     (the-eval `(require
-                "benchmarks/ra-list.rkt"
-                "benchmarks/freq-count.rkt"
-                "benchmarks/garden-fence.rkt"))
+                data/ralist/benchmarks/ra-list
+                data/ralist/benchmarks/freq-count
+                data/ralist/benchmarks/garden-fence))
     the-eval))
 
 @title[#:tag "run-benchmarks"]{Benchmarks}

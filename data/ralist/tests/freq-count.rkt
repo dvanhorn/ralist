@@ -1,7 +1,7 @@
 #lang racket
 (require ;planet/version
          rackunit)
-(require/expose "../benchmarks/freq-count.ss" 
+(require/expose data/ralist/benchmarks/freq-count
                 ;(this-package-in benchmarks/freq-count)
                 (gen cnt-ra.0 cnt-ra.1 cnt-vec cnt-alst cnt-BST cnt-ht))
 

@@ -1,7 +1,7 @@
 #lang racket
 (require ;planet/version
          rackunit)
-(require/expose "../../ralist.rkt" ;(this-package-in main)
+(require/expose data/ralist ;(this-package-in main)
                 (#;build-tree node? make-node node-val node-left node-right
                             tree-val tree-ref tree-update
                             tree-map tree-map/n))
