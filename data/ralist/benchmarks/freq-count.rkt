@@ -174,8 +174,14 @@
    (lambda (ht freq)
      (hash-update ht freq add1 0))
    (lambda (H)
+     (out (lambda ()
+            (for ((i (in-range LOW HIGH)))
+              (define v (hash-ref H i 0))
+              (unless (zero? v)
+                (printf "~s: ~s\n" i v)))))
      ;; BUG: does not write in specified order since hash-for-each iterates
      ;; in an unspecified order.
+     #;
      (out (lambda () (hash-for-each H (lambda (k v) (printf "~s: ~s\n" k v))))))))
 
 
