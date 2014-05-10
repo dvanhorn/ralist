@@ -4,7 +4,7 @@ Purely Functional Random-Access Lists
 Copyright (c) 2009 David Van Horn
 Licensed under the Academic Free License version 3.0
 
-`(at dvanhorn (dot ccs neu edu))`
+`(at dvanhorn (dot cs umd edu))`
 
 Random-access lists are a purely functional data structure for
 representing lists of values. A random-access list may act as a drop

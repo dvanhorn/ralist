@@ -10,7 +10,7 @@
    Copyright (c) 2009 David Van Horn
    Licensed under the Academic Free License version 3.0
 
-   (at dvanhorn (dot ccs neu edu))
+   (at dvanhorn (dot cs umd edu))
 
    Implementation based on Okasaki, FPCA '95.
 

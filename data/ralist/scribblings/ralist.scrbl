@@ -4,7 +4,7 @@
 
 @title{@bold{RaList}: Purely Functional Random-Access Lists}
 
-@author+email["David Van Horn" "dvanhorn@ccs.neu.edu"]
+@author+email["David Van Horn" "dvanhorn@cs.umd.edu"]
 
 Random-access lists are a purely functional data structure for representing lists 
 of values. A random-access list may act as a drop in replacement for the usual 
