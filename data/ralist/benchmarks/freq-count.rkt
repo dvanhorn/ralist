@@ -27,7 +27,6 @@
                          (unless (= v 0) (printf F (+ 80 i) v)))))))))
 
 
-(require mzlib/etc)
 
 (define HIGH 22000)
 (define LOW     80)
@@ -77,10 +76,11 @@
     (define i (- freq LOW))
     (vector-set! a i (+ (vector-ref a i) 1)))
   (with-input-from-string f
-    (rec loop
+    (letrec ((loop
       (lambda ()
         (define nxt (read))
         (unless (eof-object? nxt) (up nxt) (loop)))))
+      loop))
   ;; ---
   (with-output-to-string
     (lambda ()
@@ -96,10 +96,11 @@
 (define (cnt-alst f)
   (define l:in
     (with-input-from-string f
-      (rec L
+      (letrec ((L
         (lambda ()
           (define nxt (read))
-          (if (eof-object? nxt) '() (cons nxt (L)))))))
+          (if (eof-object? nxt) '() (cons nxt (L))))))
+        L)))
   (define l:st (sort l:in <))
   (define res
     (let L ([l (cdr l:st)][p (car l:st)][c 1])
