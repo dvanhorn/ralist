@@ -30,12 +30,10 @@
 @(define-syntax failures 
    (syntax-rules ()
      [(failures e ...)
-      (begin (examples #:eval the-eval/co 
-                       (make-paragraph '("Failures with contracts:")) 
-                       e ...)
-             (examples #:eval the-eval 
-                       (make-paragraph '("Failures without contracts:")) 
-                       e ...))]))
+      (begin (make-paragraph '("Failures with contracts:")) 
+             (interaction #:eval the-eval/co e ...)
+             (make-paragraph '("Failures without contracts:")) 
+             (interaction #:eval the-eval e ...))]))
 
 @title[#:tag "main"]{Bindings}
 
