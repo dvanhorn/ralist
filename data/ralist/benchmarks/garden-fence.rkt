@@ -1,6 +1,6 @@
 #lang racket
 ;; Garden fence encryption benchmark
-;; http://list.cs.brown.edu/pipermail/plt-scheme/2009-March/031313.html
+;; http://lists.racket-lang.org/users/archive//2009-March/031274.html
 
 ;; All tests have been moved to tests/garden-fence.
 (provide run-garden-fence-benchmark
@@ -53,7 +53,6 @@
 
 ;; ----------------------------------------------------
 ;; Imperative vector solution
-;; http://list.cs.brown.edu/pipermail/plt-scheme/2009-March/031313.html
 
 ;; [Vectorof [Listof X]] Nat X -> Void
 ;; Set v[i] to (cons x v[i]).
@@ -119,7 +118,6 @@
 
 ;; ----------------------------------------------------
 ;; Felleisen, combinator solution
-;; http://list.cs.brown.edu/pipermail/plt-dev/2009-April/000532.html
 
 ;; String Nat -> String
 ;; encrypt according to fence shape
@@ -165,7 +163,6 @@
 
 ;; ----------------------------------------------------
 ;; Tobin-Hochstadt, cycle solution
-;; http://list.cs.brown.edu/pipermail/plt-dev/2009-April/000533.html
 
 (define (rail n l)
   (zip-sort (for/list ([i (in-cycle (in-range 1 (add1 n)) 
@@ -186,7 +183,6 @@
 
 ;; ----------------------------------------------------
 ;; Felleisen, output data driven design recipe solution 
-;; http://list.cs.brown.edu/pipermail/plt-scheme/2009-March/031344.html
 ;; Revised, based on personal communication, 05.02.2009
 
 (define X '_)

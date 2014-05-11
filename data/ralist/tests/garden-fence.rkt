@@ -34,6 +34,7 @@
                        (crypt-de c))))
 
 ;; A hack because there is no make-test-suite function.  See also:
+;; [WRONG LINK, can't find right thread]
 ;; http://list.cs.brown.edu/pipermail/plt-scheme/2009-May/032742.html
 (define/provide-test-suite garden-fence-tests
   (hack 0)

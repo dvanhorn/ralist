@@ -89,7 +89,7 @@
            (unless (= v 0) (printf F (+ 80 i) v))))))
 
 ;; Fixed bug discussed here:
-;; http://list.cs.brown.edu/pipermail/plt-scheme/2009-April/032608.html
+;; http://lists.racket-lang.org/users/archive//2009-April/032572.html
 
 ;; String -> String
 ;; sort, then create association list via [Listof [List Nat Nat]]

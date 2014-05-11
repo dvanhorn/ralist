@@ -50,7 +50,7 @@ to the problem of counting the frequencies of each number in a given
 list of numbers.
 
 See the thread starting 
-@link["http://list.cs.brown.edu/pipermail/plt-scheme/2009-April/032250.html"]{here} 
+@link["http://lists.racket-lang.org/users/archive//2009-April/032214.html"]{here} 
 for discussion.
 
 @defproc[(run-freq-count-benchmark) void?]{Runs this benchmark.}
@@ -111,9 +111,9 @@ The following solutions are included in the benchmark:
 }
 
 See the thread starting 
-@link["http://list.cs.brown.edu/pipermail/plt-scheme/2009-March/031310.html"]{here} 
+@link["http://lists.racket-lang.org/users/archive/2009-March/031274.html"]{here} 
 and
-@link["http://list.cs.brown.edu/pipermail/plt-dev/2009-April/000522.html"]{here}
+@link["http://lists.racket-lang.org/dev/archive/2009-April/000522.html"]{here}
 for discussion.
 
 @defproc[(run-garden-fence-benchmark) void?]{Runs this benchmark.}
