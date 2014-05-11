@@ -4,9 +4,9 @@
                    for sequence? lambda < and procedure? 
                    procedure-arity-includes?)
           (for-label racket/contract)
-          (only-in (for-label "../contract.rkt")
+          (only-in (for-label data/ralist/contract)
                    count=/c count>/c is-true/c arity-includes/c)
-          (only-in (for-label "../contract.rkt")
+          (only-in (for-label data/ralist/contract)
                    build-list map count))
 
 @title[#:tag "contract"]{Contract}

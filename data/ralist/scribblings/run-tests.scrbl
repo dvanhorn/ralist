@@ -3,11 +3,11 @@
           scribble/eval
           (for-label rackunit
                      rackunit/text-ui
-                     "../run-tests.rkt"
-                     "../tests/tree.rkt"
-                     "../tests/ra-list.rkt"
-                     "../tests/garden-fence.rkt"
-                     "../tests/freq-count.rkt"))
+                     data/ralist/run-tests
+                     data/ralist/tests/tree
+                     data/ralist/tests/ra-list
+                     data/ralist/tests/garden-fence
+                     data/ralist/tests/freq-count))
 
 @(define the-eval
   (let ([the-eval (make-base-eval)])

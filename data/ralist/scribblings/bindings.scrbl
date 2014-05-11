@@ -9,8 +9,8 @@
                    zero? values sqrt)
           (prefix-in mz: (only-in (for-label racket) length))
           (for-label racket/contract)
-          (for-label "../../ralist.rkt")
-          (only-in (for-label "../contract.rkt")
+          (for-label data/ralist)
+          (only-in (for-label data/ralist/contract)
                    count=/c count>/c is-true/c arity-includes/c))
 
 @(define the-eval

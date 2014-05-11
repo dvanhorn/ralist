@@ -1,11 +1,11 @@
 #lang scribble/doc
 @(require scribble/manual
           scribble/eval
-          (for-label "../run-benchmarks.rkt"
-                     "../benchmarks/ra-list.rkt"
-                     "../benchmarks/contract.rkt"
-                     "../benchmarks/freq-count.rkt"
-                     "../benchmarks/garden-fence.rkt"))
+          (for-label data/ralist/run-benchmarks
+                     data/ralist/benchmarks/ra-list
+                     data/ralist/benchmarks/contract
+                     data/ralist/benchmarks/freq-count
+                     data/ralist/benchmarks/garden-fence))
 
 @(define the-eval
   (let ([the-eval (make-base-eval)])
