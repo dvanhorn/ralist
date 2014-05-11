@@ -27,20 +27,10 @@
    (check-equal? (decrypt "PMPRAM RSORIGAIGNX" 4)
                  "PROGRAMMING PRAXIS")))
 
-(define (hack n)
-  (let ((c (list-ref crypts n)))
-    (make-garden-suite (crypt-name c)
-                       (crypt-en c)
-                       (crypt-de c))))
-
-;; A hack because there is no make-test-suite function.  See also:
-;; [WRONG LINK, can't find right thread]
-;; http://list.cs.brown.edu/pipermail/plt-scheme/2009-May/032742.html
-(define/provide-test-suite garden-fence-tests
-  (hack 0)
-  (hack 1)
-  (hack 2)
-  (hack 3)
-  (hack 4)
-  (hack 5)
-  (hack 6))
+(define garden-fence-tests
+  (make-test-suite "garden-fence-tests"
+                   (map (lambda (c)
+                          (make-garden-suite (crypt-name c)
+                                             (crypt-en c)
+                                             (crypt-de c)))
+                          crypts)))
