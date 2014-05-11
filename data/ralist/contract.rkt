@@ -3,7 +3,7 @@
          (prefix-in mz: (only-in racket length)))
 
 (provide in-list for/list)
-(provide count=/c count>/c is-true/c arity-includes/c)
+(provide count=/c count>/c is-true/c)
 
 ;; Any -> Flat-Contract
 ;; The input is acceptable whenever e is true.
@@ -36,15 +36,6 @@
    (list 'count>/c n)
    (lambda (x)
      (> (count x) n))))
-
-;; Nat -> Flat-Contract
-;; The input must be a procedure that can be applied to n arguments.
-(define (arity-includes/c n)
-  (flat-named-contract
-   (list 'arity-includes/c n)
-   (lambda (f)
-     (and (procedure? f)
-          (procedure-arity-includes? f n)))))
 
 ;; Renamed for better error messages ("ra:cons?" instead of "kons?").
 (define cons/c (procedure-rename cons? 'ra:cons?)) 
@@ -100,14 +91,14 @@
  [list-update 
   (->d ([ls (count>/c i)]
         [i natural-number/c]
-        [f (arity-includes/c 1)])
+        [f (procedure-arity-includes/c 1)])
        ()
        any)]
  
  [list-ref/update 
   (->d ([ls (count>/c i)]
         [i natural-number/c]
-        [f (arity-includes/c 1)])
+        [f (procedure-arity-includes/c 1)])
        ()
        any)]
  
@@ -121,13 +112,13 @@
  [build-list 
   (->d ([n natural-number/c]
         [f (or/c (is-true/c (zero? n))
-                 (arity-includes/c 1))])
+                 (procedure-arity-includes/c 1))])
        ()
        any)]
  
  [map 
   (->d ([f (or/c (is-true/c (zero? (count xs)))
-                 (arity-includes/c (add1 (mz:length ...))))]
+                 (procedure-arity-includes/c (add1 (mz:length ...))))]
         [xs list?])
        ()
        #:rest ... 
@@ -137,7 +128,7 @@
  
  [andmap
   (->d ([f (or/c (is-true/c (zero? (count xs)))
-                 (arity-includes/c (add1 (mz:length ...))))]
+                 (procedure-arity-includes/c (add1 (mz:length ...))))]
         [xs list?])
        ()
        #:rest ... 
@@ -146,7 +137,7 @@
  
  [ormap
   (->d ([f (or/c (is-true/c (zero? (count xs)))
-                 (arity-includes/c (add1 (mz:length ...))))]
+                 (procedure-arity-includes/c (add1 (mz:length ...))))]
         [xs list?])
        ()
        #:rest ... 
@@ -155,7 +146,7 @@
  
  [foldr     
   (->d ([f (or/c (is-true/c (zero? (count xs)))
-                 (arity-includes/c (+ 2 (mz:length ...))))]
+                 (procedure-arity-includes/c (+ 2 (mz:length ...))))]
         [b any/c]
         [xs list?])
        ()
@@ -165,7 +156,7 @@
 
  [foldl     
   (->d ([f (or/c (is-true/c (zero? (count xs)))
-                 (arity-includes/c (+ 2 (mz:length ...))))]
+                 (procedure-arity-includes/c (+ 2 (mz:length ...))))]
         [a any/c]
         [xs list?])
        ()

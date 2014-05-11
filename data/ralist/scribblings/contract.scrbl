@@ -5,7 +5,7 @@
                    procedure-arity-includes?)
           (for-label racket/contract)
           (only-in (for-label data/ralist/contract)
-                   count=/c count>/c is-true/c arity-includes/c)
+                   count=/c count>/c is-true/c)
           (only-in (for-label data/ralist/contract)
                    build-list map count))
 
@@ -27,12 +27,3 @@ greater than @racket[n].}
 Returns a flat contract that requires nothing of its input,
 and returns @racket[x], i.e. it produces a contract for
 the predicate @racket[(lambda (_) x)].}
-
-@defproc[(arity-includes/c [n natural-number/c]) flat-contract?]{
-Returns a flat contract that requires its input to be a procedure
-accepting at least @racket[n] arguments, i.e. it produces a contract
-for the predicate,
-@racketblock[
-  (lambda (x) 
-    (and (procedure? x)
-         (procedure-arity-includes? x n)))]}

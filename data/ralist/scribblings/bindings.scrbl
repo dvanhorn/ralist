@@ -11,7 +11,7 @@
           (for-label racket/contract)
           (for-label data/ralist)
           (only-in (for-label data/ralist/contract)
-                   count=/c count>/c is-true/c arity-includes/c))
+                   count=/c count>/c is-true/c))
 
 @(define the-eval
   (let ([the-eval (make-base-eval)])
@@ -260,7 +260,7 @@ O(@racket[(min i (log2 (count xs)))]).}
 
 @defproc[(list-update [xs (count>/c i)] 
                       [i natural-number/c] 
-                      [f (arity-includes/c 1)])
+                      [f (procedure-arity-includes/c 1)])
          cons?]{
 Returns @racket[(list-set xs i (f (list-ref xs i)))].} 
 
@@ -273,7 +273,7 @@ efficient.}
                               
 @defproc[(list-ref/update [xs (count>/c i)] 
                           [i natural-number/c] 
-                          [f (arity-includes/c 1)])
+                          [f (procedure-arity-includes/c 1)])
          (values any/c cons?)]{
 Returns @racket[(values (list-ref xs i) (list-set xs i (f (list-ref xs i))))], 
 but is more efficient.}
@@ -327,7 +327,7 @@ Returns the last element of the list.}
           (last (list* 1 2 3))]
 
 @defproc[(map [f (or/c (is-true/c (zero? (count xs)))
-                       (arity-includes/c (add1 (mz:length ...))))]
+                       (procedure-arity-includes/c (add1 (mz:length ...))))]
               [xs (and/c list? (count=/c (count xs)))] 
               ...+)
          list?]{
@@ -345,27 +345,27 @@ result of @racket[f] in order.}
           (map + (list 1 2 3) (list 4))]
 
 @defproc[(foldr [f (or/c (is-true/c (zero? (count xs)))
-                         (arity-includes/c (+ 2 (mz:length ...))))]
+                         (procedure-arity-includes/c (+ 2 (mz:length ...))))]
                 [b any/c]
                 [xs list?] ...+)
          any]{
 Like @racket[foldr] but for random-access lists.}
 
 @defproc[(foldl [f (or/c (is-true/c (zero? (count xs)))
-                         (arity-includes/c (+ 2 (mz:length ...))))]
+                         (procedure-arity-includes/c (+ 2 (mz:length ...))))]
                 [a any/c]
                 [xs list?] ...+)
          any]{
 Like @racket[foldl] but for random-access lists.}
 
 @defproc[(andmap [f (or/c (is-true/c (zero? (count xs)))
-                          (arity-includes/c (add1 (mz:length ...))))]
+                          (procedure-arity-includes/c (add1 (mz:length ...))))]
                  [xs (and/c list? (count=/c (count xs)))]  ...+) 
          any]{
 Like @racket[andmap] but for random-access lists.}
 
 @defproc[(ormap [f (or/c (is-true/c (zero? (count xs)))
-                         (arity-includes/c (add1 (mz:length ...))))]
+                         (procedure-arity-includes/c (add1 (mz:length ...))))]
                 [xs (and/c list? (count=/c (count xs)))]  ...+) 
          any]{
 Like @racket[ormap] but for random-access lists.}
@@ -380,7 +380,7 @@ Equivalent to @racket[(build-list n (lambda (i) x))].}
 
 @defproc[(build-list [n natural-number/c] 
                      [f (or/c (is-true/c (zero? n)) 
-                              (arity-includes/c 1))]) 
+                              (procedure-arity-includes/c 1))]) 
          list?]{
 Creates a list of @racket[n] elemenents by applying @racket[f]
 to the integers from @racket[0] to @racket[(sub1 n)].}
