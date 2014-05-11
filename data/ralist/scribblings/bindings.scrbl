@@ -4,8 +4,7 @@
           scribble/struct
           (only-in (for-label racket)
                    lambda for for/fold sequence? >= < + 
-                   min sub1 add1 positive? procedure?
-                   procedure-arity-includes? or
+                   min sub1 add1 positive? or
                    zero? values sqrt)
           (prefix-in mz: (only-in (for-label racket) length))
           (for-label racket/contract)

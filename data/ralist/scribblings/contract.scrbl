@@ -1,13 +1,9 @@
 #lang scribble/doc
 @(require scribble/manual
-          (only-in (for-label racket) 
-                   for sequence? lambda < and procedure? 
-                   procedure-arity-includes?)
+          (only-in (for-label racket) lambda)
           (for-label racket/contract)
           (only-in (for-label data/ralist/contract)
-                   count=/c count>/c is-true/c)
-          (only-in (for-label data/ralist/contract)
-                   build-list map count))
+                   count=/c count>/c is-true/c))
 
 @title[#:tag "contract"]{Contract}
 
