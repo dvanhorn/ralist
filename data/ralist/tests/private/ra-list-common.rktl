@@ -173,6 +173,10 @@
 (check-equal? (reverse (list 0 1 2 3 4))
               (list 4 3 2 1 0))
 
+(check-equal? (range 0)  (list))
+(check-equal? (range 1)  (list 0))
+(check-equal? (range 10) (list 0 1 2 3 4 5 6 7 8 9))
+
 (check-equal? (for/last ([i (in-list (list))]) i) false)
 (check-equal? (for/last ([i (in-list (list 1 2))]) i) 2)
 (check-equal? (for/last ([i (in-list (list 1 2 3 4))]) i) 4)
