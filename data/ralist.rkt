@@ -606,6 +606,10 @@
 (define (ra:reverse ls)
   (ra:foldl/1 ra:cons ra:empty ls))
 
+;; Nat -> [RaListof Nat]
+(define (ra:range n)
+  (ra:build-list n (lambda (x) x)))
+
 ;; Not ready for release, but used internally.
 
 ;; Match patterns
