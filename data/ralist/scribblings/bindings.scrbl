@@ -435,3 +435,12 @@ Returns a list with all the elements of @racket[xs] in reverse order.}
                  (reverse empty)
                  (reverse (list 1 2 3))]
 @failures[(reverse (list* 1 2 3))]
+
+@defproc[(range [n natural-number/c]) list?]{
+Returns a list of natural numbers ranging from 0 to @racket[n-1] in ascending order.}
+
+@examples[#:eval the-eval
+                 (range 0)
+                 (range 10)]
+
+@failures[(range (list 1 2 3))]
