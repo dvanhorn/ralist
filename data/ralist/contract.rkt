@@ -59,6 +59,7 @@
  [length     (-> list? any)]
  [append     (->* () () #:rest (listof list?) any)] ;; HANDLE IMPROPER CASE
  [reverse    (-> list? any)]
+ [range      (-> natural-number/c any)]
  [second     (-> (and/c list? (count>/c 1)) any)] 
  [third      (-> (and/c list? (count>/c 2)) any)]
  [fourth     (-> (and/c list? (count>/c 3)) any)]
