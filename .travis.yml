@@ -1,6 +1,7 @@
 language: racket
-sudo: required
+sudo: false
 env:
+ - RACKET_DIR=~/racket
  - RACKET_VERSION=HEAD
 
 before_install:
