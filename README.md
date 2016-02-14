@@ -6,6 +6,8 @@ Licensed under the Academic Free License version 3.0
 
 `(at dvanhorn (dot cs umd edu))`
 
+[![Build Status](https://travis-ci.org/dvanhorn/ralist.png?branch=master)](https://travis-ci.org/dvanhorn/ralist)
+
 Random-access lists are a purely functional data structure for
 representing lists of values. A random-access list may act as a drop
 in replacement for the usual sequential list data structure (`cons?`,
