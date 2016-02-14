@@ -1,5 +1,5 @@
 language: racket
-
+sudo: required
 env:
  - RACKET_VERSION=HEAD
 
