@@ -16,5 +16,5 @@ install:
 before_script:
 
 script:
- - raco link data
- - raco test -l data/ralist/run-tests
+ - raco pkg install -u --auto ../ralist/
+ - raco test --drdr --package ralist
