@@ -1,8 +1,10 @@
 language: racket
 sudo: false
 env:
- - RACKET_DIR=~/racket
- - RACKET_VERSION=HEAD
+  global:
+    - RACKET_DIR=~/racket
+  matrix:
+   - RACKET_VERSION=HEAD
 
 before_install:
  - git clone https://github.com/greghendershott/travis-racket.git
