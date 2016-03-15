@@ -9,3 +9,6 @@
 (run-freq-count-benchmark)
 (run-garden-fence-benchmark)
 (run-contract-benchmark)
+
+(module config info
+  (define timeout 300))
