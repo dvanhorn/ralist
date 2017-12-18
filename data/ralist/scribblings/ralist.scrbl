@@ -2,7 +2,7 @@
 @(require ;scribble/manual
           (for-label data/ralist))
 
-@title{@bold{RaList}: Purely Functional Random-Access Lists}
+@title{RaList: Purely Functional Random-Access Lists}
 
 @author+email["David Van Horn" "dvanhorn@cs.umd.edu"]
 
