@@ -24,6 +24,12 @@
     #;(the-eval '(error-print-width 180))
     the-eval))
 
+@(define the-eval/seq
+  (let ([the-eval (make-base-eval)])
+    (the-eval `(require racket/list))
+    #;(the-eval '(error-print-width 180))
+    the-eval))
+
 @(define-syntax failures 
    (syntax-rules ()
      [(failures e ...)
@@ -57,7 +63,59 @@ the list:
 (list-set (list 'x 'y 'z) 2 'q)
 ]
 
+This can have a big impact on efficiency of accessing elements in a
+list by their index.  For example, getting the @racket[last] element
+of a sequential list takes time proportional to the length of the
+list, but can be done much faster with random-access lists:
 
+@interaction[#:eval the-eval
+(module m racket/base
+  (require data/ralist)
+  (define ls (build-list 100000 values))
+  (time (for ([i 1000]) (last ls))))
+(require 'm)
+]
+
+Compare this with the timing for sequential lists:
+@interaction[#:eval the-eval/seq
+(module n racket/base
+  (require racket/list)
+  (define ls (build-list 100000 values))
+  (time (for ([i 1000]) (last ls))))
+(require 'n)
+]
+
+On the other hand, while list operations such as @racket[cons],
+@racket[car], and @racket[cdr] take constant time just like their
+sequential-list counterparts, the constant factors are usually worse.
+In particular, @racket[cdr] may allocate memory.  For example, here is the same
+program, but @racket[last] is computed by iteratively taking the
+@racket[cdr] of the list instead of @racket[(list-ref xs (sub1 (length xs)))]:
+@interaction[#:eval the-eval
+(module o racket/base
+  (require data/ralist)
+  (define ls (build-list 100000 values))  
+  (define (last xs) 
+    (if (empty? (cdr xs)) (car xs) (last (cdr xs))))
+  (time (for ([i 1000]) (last ls))))
+(require 'o)]
+
+Compare this with the performance of using sequential lists:
+@interaction[#:eval the-eval
+(module p racket/base
+  (require racket/list)
+  (define ls (build-list 100000 values))  
+  (define (last xs) 
+    (if (empty? (cdr xs)) (car xs) (last (cdr xs))))
+  (time (for ([i 1000]) (last ls))))
+(require 'p)]
+
+There are several benchmarks described in the @secref{run-benchmarks}
+section comparing the performance of random-access lists to
+sequential-access lists as well as mutable data structures such as
+vectors.  In general, random-access lists are well-suited for
+situations requiring variable-length lists that are mostly accessed by
+indexed.
 
 @section{Pairs and Lists}
 
