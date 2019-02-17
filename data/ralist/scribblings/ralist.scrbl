@@ -19,4 +19,4 @@ library.  This implementation is based on Okasaki, FPCA '95.
 @include-section["contract.scrbl"]
 @include-section["run-tests.scrbl"]
 @include-section["run-benchmarks.scrbl"]
-@index-section[]
+
