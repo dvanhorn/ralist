@@ -3,8 +3,9 @@
 
 ;; Benchmark: purely functional frequency counting function.
 (require (prefix-in ra: "../../ralist.rkt"))
+(require (prefix-in ra/c: "../../ralist/contract.rkt"))
 
-(define (cnt-ra.0 f)
+(define ((make-cnt-ra.0 ra:make-list ra:list-update ra:in-list) f)
   (cnt-fp
    f
    (lambda () (ra:make-list (- HIGH LOW) 0))
@@ -15,7 +16,7 @@
                            (i (in-range (- HIGH LOW))))
                        (unless (= v 0) (printf F (+ 80 i) v))))))))
 
-(define (cnt-ra.1 f)
+(define ((make-cnt-ra.1 ra:make-list ra:list-update ra:list-ref) f)
   (cnt-fp
    f
    (lambda () (ra:make-list (- HIGH LOW) 0))
@@ -26,7 +27,11 @@
                        (let ((v (ra:list-ref ls i)))
                          (unless (= v 0) (printf F (+ 80 i) v)))))))))
 
+(define cnt-ra.0 (make-cnt-ra.0 ra:make-list ra:list-update ra:in-list))
+(define cnt-ra.1 (make-cnt-ra.1 ra:make-list ra:list-update ra:list-ref))
 
+(define cnt-ra/c.0 (make-cnt-ra.0 ra/c:make-list ra/c:list-update ra/c:in-list))
+(define cnt-ra/c.1 (make-cnt-ra.1 ra/c:make-list ra/c:list-update ra/c:list-ref))
 
 (define HIGH 22000)
 (define LOW     80)
@@ -61,6 +66,8 @@
   (test "hash  :" cnt-ht)
   (test "ra.0  :" cnt-ra.0)
   (test "ra.1  :" cnt-ra.1)
+  (test "ra/c.0:" cnt-ra/c.0)
+  (test "ra/c.1:" cnt-ra/c.1)
   (newline))
 
 ;; -----------------------------------------------------------------------------
