@@ -17,4 +17,4 @@ before_script:
 
 script:
  - raco pkg install -u --auto ../ralist/
- - raco test --drdr --package ralist
+ - raco test --drdr --package ralist --timeout 180
