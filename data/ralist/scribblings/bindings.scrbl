@@ -39,7 +39,7 @@
 @margin-note{In addition to @racketmodname[data/ralist], there is a
 @racketmodname[data/ralist/contract] module that provides the same
 bindings but with checked contracts.  The only difference is
-potentially worse performance and error handling.  See
+performance and error checking.  See
 @secref{Checked_and_Unchecked_contracts} for details.}
 
 Random-access lists look and behave much like their sequential access
