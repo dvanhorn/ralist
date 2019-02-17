@@ -15,7 +15,6 @@ and updating (@racket[list-ref], @racket[list-set]).
 This document outlines the API for the random-access list 
 library.  This implementation is based on Okasaki, FPCA '95.
 
-@table-of-contents[]
 @include-section["bindings.scrbl"]
 @include-section["contract.scrbl"]
 @include-section["run-tests.scrbl"]

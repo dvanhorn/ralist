@@ -5,7 +5,7 @@
           (only-in (for-label data/ralist/contract)
                    count=/c count>/c is-true/c))
 
-@title[#:tag "contract"]{Contract}
+@title[#:tag "contract"]{Contracts}
 
 @defmodule[data/ralist/contract]
 

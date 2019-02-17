@@ -32,35 +32,32 @@
              (make-paragraph '("Failures without contracts:")) 
              (interaction #:eval the-eval e ...))]))
 
-@title[#:tag "main"]{Bindings}
+@title[#:tag "main"]{Random-Access Lists}
 
 @defmodule[data/ralist]
 
-@section{Checked and Unchecked contracts}
+@margin-note{In addition to @racketmodname[data/ralist], there is a
+@racketmodname[data/ralist/contract] module that provides the same
+bindings but with checked contracts.  The only difference is
+potentially worse performance and error handling.  See
+@secref{Checked_and_Unchecked_contracts} for details.}
 
-This library provides bindings for list operations in two forms: the 
-first @italic{assumes} all contracts are met, the second @italic{checks}.
+Random-access lists look and behave much like their sequential access
+counterparts.  The main difference is that @racket[list-ref] and
+@racket[list-set] are logarithmic, rather than linear, in the size of
+the list:
+@interaction[#:eval the-eval
+(list 0 1 2 3)
+(cons 1 2)
+(car (cons 1 2))
+(cdr (cons 1 2))
+(map (lambda (i) (/ 1 i))
+     (list 1 2 3))
+(list-ref (list 'x 'y 'z) 2)
+(list-set (list 'x 'y 'z) 2 'q)
+]
 
-The observable differences are in their failure modes---what happens 
-when the contract is not met---and execution times.  While the unchecked 
-operations are free to fail in any way (which includes not failing at all
-in some cases), if the user of this library violates the contract, the 
-checked bindings will fail with a contract violation exception with appropriate
-blame.  On the other hand, the unchecked bindings avoid any
-overhead associated with the contract check, which can be
-significant.
 
-The checked bindings are designed to be complete in their checking of
-contract properties, regardless of computational expense.  The unchecked
-bindings are designed to be fast and to give reasonable error messages to
-any violation that can easily be detected.  Given inputs that satisfy
-the contract, both versions produced equivalent results.
-
-The main module provides bindings for list operations with unchecked 
-contracts.  Where appropriate, examples are given demonstrating the 
-differences in failure modes for the checked and unchecked bindings.
-See the benchmark on @seclink{benchmarks/contract} for a performance
-comparison.
 
 @section{Pairs and Lists}
 
@@ -110,10 +107,6 @@ the bodys must produce a single value, and the result of the
                  (for/list () 'any)
                  (for/list ([i '()])
                    (error "doesn't get here"))]
-
-@section{Match patterns}
-
-Coming soon.
 
 @section{Values}
 
@@ -444,3 +437,29 @@ Returns a list of natural numbers ranging from 0 to @racket[n-1] in ascending or
                  (range 10)]
 
 @failures[(range (list 1 2 3))]
+
+@section{Checked and Unchecked contracts}
+
+This library provides bindings for list operations in two forms: the 
+first @italic{assumes} all contracts are met, the second @italic{checks}.
+
+The observable differences are in their failure modes---what happens 
+when the contract is not met---and execution times.  While the unchecked 
+operations are free to fail in any way (which includes not failing at all
+in some cases), if the user of this library violates the contract, the 
+checked bindings will fail with a contract violation exception with appropriate
+blame.  On the other hand, the unchecked bindings avoid any
+overhead associated with the contract check, which can be
+significant.
+
+The checked bindings are designed to be complete in their checking of
+contract properties, regardless of computational expense.  The unchecked
+bindings are designed to be fast and to give reasonable error messages to
+any violation that can easily be detected.  Given inputs that satisfy
+the contract, both versions produced equivalent results.
+
+The main module provides bindings for list operations with unchecked 
+contracts.  Where appropriate, examples are given demonstrating the 
+differences in failure modes for the checked and unchecked bindings.
+See the benchmark on @seclink{benchmarks/contract} for a performance
+comparison.
