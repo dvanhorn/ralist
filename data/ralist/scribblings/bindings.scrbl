@@ -50,8 +50,8 @@ performance and error checking.  See
 
 Random-access lists look and behave much like their sequential access
 counterparts.  The main difference is that @racket[list-ref] and
-@racket[list-set] are logarithmic, rather than linear, in the size of
-the list:
+@racket[list-set] take time that is logarithmic, rather than linear,
+in the size of the list:
 @interaction[#:eval the-eval
 (list 0 1 2 3)
 (cons 1 2)
