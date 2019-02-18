@@ -35,7 +35,8 @@
   (flat-named-contract
    (list 'count>/c n)
    (lambda (x)
-     (> (count x) n))))
+     (> (count x) n)
+     #;(count>? x n))))
 
 ;; Renamed for better error messages ("ra:cons?" instead of "kons?").
 (define cons/c (procedure-rename cons? 'ra:cons?)) 
@@ -71,96 +72,78 @@
  [tenth      (-> (and/c list? (count>/c 9)) any)]
  [last       (-> (and/c cons/c list?) any)]
  
- [list-tail  (->d ([xs (count>/c (sub1 i))]
+ [list-tail  (->i ([xs (i) (count>/c (sub1 i))]
                    [i natural-number/c])
-                  ()
-                  any)] 
+                  any)]
  
  [make-list  (-> natural-number/c any/c any)]
  
- [list-ref   (->d ([ls (count>/c i)]
+ [list-ref   (->i ([ls (i) (count>/c i)]
                    [i natural-number/c])
-                  ()
                   any)]
  
- [list-set   (->d ([ls (count>/c i)]
+ [list-set   (->i ([ls (i) (count>/c i)]
                    [i natural-number/c]
                    [x any/c])
-                  ()
                   any)]
  
- [list-update 
-  (->d ([ls (count>/c i)]
+ [list-update
+  (->i ([ls (i) (count>/c i)]
         [i natural-number/c]
         [f (procedure-arity-includes/c 1)])
-       ()
        any)]
  
- [list-ref/update 
-  (->d ([ls (count>/c i)]
+ [list-ref/update
+  (->i ([ls (i) (count>/c i)]
         [i natural-number/c]
         [f (procedure-arity-includes/c 1)])
-       ()
        any)]
  
  [list-ref/set
-  (->d ([ls (count>/c i)]
+  (->i ([ls (i) (count>/c i)]
         [i natural-number/c]
         [x any/c])
-       ()
        any)]
  
- [build-list 
-  (->d ([n natural-number/c]
-        [f (or/c (is-true/c (zero? n))
-                 (procedure-arity-includes/c 1))])
-       ()
+ [build-list
+  (->i ([n natural-number/c]
+        [f (n) (or/c (is-true/c (zero? n))
+                     (procedure-arity-includes/c 1))])
        any)]
  
  [map 
-  (->d ([f (or/c (is-true/c (zero? (count xs)))
-                 (procedure-arity-includes/c (add1 (mz:length ...))))]
+  (->i ([f (xs r) (or/c (is-true/c (zero? (count xs)))
+                        (procedure-arity-includes/c (add1 (mz:length r))))]
         [xs list?])
-       ()
-       #:rest ... 
-       (listof (and/c list? (count=/c (count xs))))
+       #:rest [r (xs) (listof (and/c list? (count=/c (count xs))))]
        any)]
- 
- 
+  
  [andmap
-  (->d ([f (or/c (is-true/c (zero? (count xs)))
-                 (procedure-arity-includes/c (add1 (mz:length ...))))]
+  (->i ([f (xs r) (or/c (is-true/c (zero? (count xs)))
+                        (procedure-arity-includes/c (add1 (mz:length r))))]
         [xs list?])
-       ()
-       #:rest ... 
-       (listof (and/c list? (count=/c (count xs))))
+       #:rest [r (xs) (listof (and/c list? (count=/c (count xs))))]
        any)]
  
  [ormap
-  (->d ([f (or/c (is-true/c (zero? (count xs)))
-                 (procedure-arity-includes/c (add1 (mz:length ...))))]
+  (->i ([f (xs r) (or/c (is-true/c (zero? (count xs)))
+                        (procedure-arity-includes/c (add1 (mz:length r))))]
         [xs list?])
-       ()
-       #:rest ... 
-       (listof (and/c list? (count=/c (count xs))))
+       #:rest [r (xs) (listof (and/c list? (count=/c (count xs))))]
        any)]
  
- [foldr     
-  (->d ([f (or/c (is-true/c (zero? (count xs)))
-                 (procedure-arity-includes/c (+ 2 (mz:length ...))))]
+ [foldr
+  (->i ([f (xs r) (or/c (is-true/c (zero? (count xs)))
+                        (procedure-arity-includes/c (+ 2 (mz:length r))))]
         [b any/c]
         [xs list?])
-       ()
-       #:rest ... 
-       (listof (and/c list? (count=/c (count xs))))
+       #:rest [r (xs) (listof (and/c list? (count=/c (count xs))))]
        any)]
 
- [foldl     
-  (->d ([f (or/c (is-true/c (zero? (count xs)))
-                 (procedure-arity-includes/c (+ 2 (mz:length ...))))]
+ [foldl
+  (->i ([f (xs r) (or/c (is-true/c (zero? (count xs)))
+                        (procedure-arity-includes/c (+ 2 (mz:length r))))]
         [a any/c]
         [xs list?])
-       ()
-       #:rest ... 
-       (listof (and/c list? (count=/c (count xs))))
+       #:rest [r (xs) (listof (and/c list? (count=/c (count xs))))]
        any)])
