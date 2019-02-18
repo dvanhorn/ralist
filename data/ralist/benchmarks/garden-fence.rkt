@@ -88,32 +88,44 @@
 ;; ----------------------------------------------------
 ;; Functional random access list solution
 
-(require (prefix-in ra: "../../ralist.rkt"))
+(require (prefix-in ra: "../../ralist.rkt")
+         (prefix-in rc: "../../ralist/contract.rkt"))
 
-;; Nat Nat -> [Listof Nat]
-;; Generate a fence permutation of the given
-;; height (> 1) for strings of length len.
-(define (fence-ra height len)
-   (let ([bot 0]
-         [top (sub1 height)])
-     (let loop ([n 0] [level 0] [move add1] [rls (ra:make-list height empty)])
-       (cond [(= n len) 
-              (ra:foldr app-rev empty rls)]
-             [(< level bot) (loop n (add1 bot) add1 rls)]
-             [(> level top) (loop n (sub1 top) sub1 rls)]
-             [else
-              (loop (add1 n) 
-                    (move level) 
-                    move
-                    (ra:list-update rls level (lambda (ls) (cons n ls))))]))))
+(define (make-fence-ra ra:make-list ra:foldr ra:list-update)
+
+  ;; Nat Nat -> [Listof Nat]
+  ;; Generate a fence permutation of the given
+  ;; height (> 1) for strings of length len.
+  (define (fence-ra height len)
+     (let ([bot 0]
+           [top (sub1 height)])
+       (let loop ([n 0] [level 0] [move add1] [rls (ra:make-list height empty)])
+         (cond [(= n len) 
+                (ra:foldr app-rev empty rls)]
+               [(< level bot) (loop n (add1 bot) add1 rls)]
+               [(> level top) (loop n (sub1 top) sub1 rls)]
+               [else
+                (loop (add1 n) 
+                      (move level) 
+                      move
+                      (ra:list-update rls level (lambda (ls) (cons n ls))))]))))
+
+  fence-ra)
+
+(define fence-ra (make-fence-ra ra:make-list ra:foldr ra:list-update))
+(define fence-rc (make-fence-ra rc:make-list rc:foldr rc:list-update))
 
 ;; String Nat -> String
 (define (encrypt-ra text height)
    (permute text (fence-ra height (string-length text))))
+(define (encrypt-rc text height)
+   (permute text (fence-rc height (string-length text))))
 
 ;; String Nat -> String
 (define (decrypt-ra text height)
    (unpermute text (fence-ra height (string-length text))))
+(define (decrypt-rc text height)
+   (unpermute text (fence-rc height (string-length text))))
 
 
 ;; ----------------------------------------------------
@@ -349,6 +361,7 @@
 (define crypts
   (list (make-crypt "ve" encrypt-ve decrypt-ve)
         (make-crypt "ra" encrypt-ra decrypt-ra)
+        (make-crypt "rc" encrypt-rc decrypt-rc)
         (make-crypt "dr" encrypt-dr decrypt-dr)
         (make-crypt "co" encrypt-co decrypt-co)
         (make-crypt "cy" encrypt-cy decrypt-cy)
@@ -393,6 +406,7 @@ ve = Van Horn imperative vector
 http://lists.racket-lang.org/users/archive/2009-March/031277.html
 
 ra = random access list (translation of above)
+rc = random access list w/ contracts
 
 dr = Felleisen output data driven design recipe
 http://lists.racket-lang.org/users/archive/2009-March/031306.html
