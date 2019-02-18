@@ -126,6 +126,12 @@
 (check-equal? (length (cons 9 empty)) 1)
 (check-equal? (length (build-list 10 (lambda (i) i))) 10)
 
+(check-equal? (count #false) 0)
+(check-equal? (count empty) 0)
+(check-equal? (count (cons 9 empty)) 1)
+(check-equal? (count (build-list 10 (lambda (i) i))) 10)
+(check-equal? (count (list* 1 2 3)) 2)
+
 (check-equal? (list-tail empty 0) empty)
 (check-equal? (list-tail (cons 9 empty) 1) empty)
 (check-equal? (list-tail (list 0 1 2 3 4) 2)
